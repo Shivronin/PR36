@@ -1,0 +1,72 @@
+<popup>:
+    id : pop
+    title: 'Цвет'
+    size_hint: None, None
+    size: 360,400
+    auto_dismiss: False
+    Cpicker:
+        on_color: root.hello(self.color)
+        Button:
+            text: 'Выбрать'
+            pos_hint: {'center_x': .86, 'y': .03}
+            size_hint: None, None
+            size: 70, 50
+            on_press: root.dismiss()
+
+<Mybutton@Button>:
+    font_size: 25
+    color: 0, 1, 0, 1
+    size: 100, 100
+    size_hint: .100, .100
+
+
+ScreenManagement:
+    MainScreen:
+ 
+<MainScreen>:
+
+    lab : labe
+    Label:
+        pos: root.width*(10),root.height *(10)
+        font_size: 25
+        color: 0, 1, 0, 1
+        size: 150, 50
+        size_hint: .200, .150
+    Painter:
+        id: painter
+        
+    
+    Mybutton:
+        pos: root.width*(0.8),0
+        text: 'Цвет'
+        on_press: root.open_it1()
+        
+    FloatLayout:
+        orientation: "vertical"
+        
+        Label:
+            id: labe
+            pos: 30,30
+            font_size: 25
+            color: 0, 1, 0, 1
+            size: 50, 50
+            size_hint: .200, .150
+            text:"Толщина : 5"
+                
+            Slider:
+                pos: root.width*(0.05),root.height *(0)
+                step : 0.1
+                value: 5
+                min: 1
+                max: 25
+                on_value : root.thick(*args)
+
+    Mybutton:
+        text: 'Очистить'
+        on_release:painter.canvas.clear() ; painter.canvas.after.clear()
+        pos: root.width*(0.599),0
+        background_normal: 'clear.png'
+       
+
+ 
+       
